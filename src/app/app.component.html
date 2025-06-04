@@ -1,23 +1,34 @@
-<app-header></app-header>
+<app-header>
+    <div class="header-right__item">
+        <span *ngIf="userName" class="user-name">{{ userName }}</span>
+    </div>
+    <div class="header-right__item">
+        <app-button (click)="onAuthAction()">
+            {{ userName ? 'Logout' : 'Login' }}
+        </app-button>
+    </div>
+</app-header>
 <div class="app-root">
-  <!-- Search component -->
-  <!--<app-search></app-search>-->
+    <!-- Search component -->
+    <!--<app-search></app-search>-->
 
-  <!-- Info component -->
-  <!--<app-info></app-info>-->
+    <!-- Info component -->
+    <app-info>
+        <app-custom-button text="Add new course"></app-custom-button>
+    </app-info>
 
-  <!-- Course Card component -->
-  <!--<app-course-card></app-course-card>-->
+    <!-- Course Card component -->
+    <app-course-list [courses]="mockedCoursesList"></app-course-list>
 
-  <!-- Login Form component -->
-  <!--<app-login-form></app-login-form>-->
+    <!-- Login Form component -->
+    <!--<app-login-form></app-login-form>-->
 
-  <!-- Login Form component -->
-  <!--<app-registration-form></app-registration-form>-->
+    <!-- Login Form component -->
+    <!--<app-registration-form></app-registration-form>-->
 
-  <!-- Login Form component -->
-  <!--<app-course-form></app-course-form>-->
+    <!-- Login Form component -->
+    <!--<app-course-form></app-course-form>-->
 
-  <!-- Modal component -->
-  <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->
+    <!-- Modal component -->
+    <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->
 </div>

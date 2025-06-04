@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {mockedCoursesList} from "@shared/mocks/mocks";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'courses-app';
+  userName?: string = undefined;
+
+  onAuthAction() {
+    if (this.userName) {
+      this.userName = undefined; // Logout
+    } else {
+      this.userName = "Harry Potter"; // Login
+    }
+  }
+
+    protected readonly mockedCoursesList = mockedCoursesList;
 }
