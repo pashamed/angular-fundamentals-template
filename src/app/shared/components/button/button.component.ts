@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import {IconName} from "@fortawesome/fontawesome-svg-core";
 
 @Component({
   selector: 'app-button',
@@ -11,6 +12,9 @@ export class ButtonComponent {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas);
   }
+
+  @Input() buttonText?: string;
+  @Input() iconName?: IconName;
 
   // Use the names for the inputs `buttonText` and `iconName`.
 }
