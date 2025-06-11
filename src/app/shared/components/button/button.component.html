@@ -1,8 +1,10 @@
-<button class="app-button" [class.app-button__single-icon]="iconName && !buttonText" [type]="type">
-  <ng-container *ngIf="buttonText">
-    {{buttonText}}
-  </ng-container>
-  <ng-container *ngIf="iconName">
-    <fa-icon [icon]="['fas', iconName]"></fa-icon>
-  </ng-container>
+<button style="font-weight: 600;"
+  [disabled]="disabled"
+  class="app-button"
+  [type]="type"
+  (click)="onClick()"
+  [ngClass]="{ 'app-button__form': type === 'form', 'app-button__icon': type === 'icon' }"
+>
+  {{ text }}
+  <fa-icon *ngIf="icon" [icon]="icon" />
 </button>

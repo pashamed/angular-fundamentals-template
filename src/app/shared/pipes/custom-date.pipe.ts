@@ -1,18 +1,33 @@
 import { DatePipe } from '@angular/common';
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'customDate',
+    name: 'customDate'
 })
-export class CustomDatePipe {
-  transform(value: Date | string): string {
-    const date = typeof value === 'string' ? new Date(value) : value;
+export class CustomDatePipe implements PipeTransform {
+    // Add your code here
+    constructor(private datePipe: DatePipe) {}
 
-    if (isNaN(date.getTime())) {
-      return '';
+  transform(value: any, format: string = 'MMMM d, yyyy'): string | null {
+    if (!value) {
+      return null;
     }
 
-    const datePipe = new DatePipe('en-US');
-    return datePipe.transform(date, 'dd.MM.yyyy') || '';
+    // Check if the value is in the expected dd/MM/yyyy format
+    const dateParts = value.split('/');
+    if (dateParts.length === 3) {
+      // Construct a new date object
+      const day = parseInt(dateParts[0], 10);
+      const month = parseInt(dateParts[1], 10) - 1; // Month is zero-indexed in JavaScript Date
+      const year = parseInt(dateParts[2], 10);
+
+      const date = new Date(year, month, day);
+
+      // Format the date using Angular's DatePipe
+      return this.datePipe.transform(date, format);
+    }
+
+    // Return null if the input date format is incorrect
+    return null;
   }
 }

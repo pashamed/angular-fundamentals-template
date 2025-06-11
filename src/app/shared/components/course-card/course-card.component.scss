@@ -1,4 +1,4 @@
-@import 'src/app/shared/styles/variables/colors';
+@import "src/app/shared/styles/variables/colors";
 
 .course-card {
   padding: 32px;
@@ -7,9 +7,21 @@
   border-left: 8px solid $color-dark-gray;
   display: flex;
   justify-content: space-between;
+  margin: 32px 0;
   min-height: 170px;
   width: 80vw;
   background-color: $color-white;
+
+  .course-card__description-text{
+    margin-top: 12px;
+    line-height: 1.4;
+  }
+
+  .course-card__buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__description {
     flex: 2;
@@ -29,10 +41,6 @@
     &-text {
       margin-top: 16px;
     }
-
-    &-actions {
-      display: flex;
-      gap: 11px;
-    }
   }
+  
 }

@@ -1,10 +1,24 @@
 @import 'src/app/shared/styles/styles';
 
+.form-container{
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid rgba(205, 199, 199, 0.819);
+  border-radius: 5px;
+  padding: 25px 0px;
+}
+
 .registration-form {
-  width: 260px;
-  gap: 32px;
-  padding: 0 96px;
+  width: 280px;
+  margin-top: 36px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.registration-form a{
+  text-decoration: none;
+  color: #000;
 }

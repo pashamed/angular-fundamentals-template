@@ -1,22 +1,39 @@
 <app-header>
-  <div>{{ userName }}</div>
-  <app-button [buttonText]="buttonText"></app-button>
-</app-header>
+  <div *ngIf="isLoggedIn" style="width: 400; display: flex; justify-content: space-around; align-items: center;gap: 5px;">
+    <p>{{ userName }}</p>
+    <app-button text="LOGOUT" (click)="onLogout()">Logout</app-button>
+  </div>
+  <!-- Else display the login/register buttons -->
+  <ng-container *ngIf="!isLoggedIn">
+    <app-button
+      text="Login"
+      (click)="onLoginButtonClick()"
+    ></app-button> </ng-container
+></app-header>
 <div class="app-root">
-  <app-info title="Your List Is Empty" text="Please use ’Add New Course’ button to add your first course">
-    <app-button buttonText="Add New Course"></app-button>
-  </app-info>
+  <router-outlet></router-outlet>
+  <!-- Search component -->
+  <!-- <app-search></app-search> -->
 
-  <app-courses-list [courses]="courses" [editable]="true" (showCourseEvent)="showCourse($event)"
-    (editCourseEvent)="editCourse($event)" (deleteCourseEvent)="deleteCourse($event)"></app-courses-list>
+  <!-- Info component -->
+  <!-- <app-info title="Your List Is Empty" text="Please use `Add new Course button` to add your first course">
+    <app-button text="Add New Course" ></app-button>
+  </app-info> -->
 
-  <app-course-info [course]="courses[0]"></app-course-info>
+  <!-- Course Info Component -->
+  <!-- <app-course-info ></app-course-info> -->
 
-  <app-login-form></app-login-form>
+  <!-- <app-cours-list></app-cours-list> -->
+  <!-- <app-courses-list [courses]="courses"></app-courses-list> -->
 
-  <app-registration-form></app-registration-form>
+  <!-- Login Form component -->
+  <!-- <app-login-form></app-login-form> -->
 
-  <app-course-form></app-course-form>
+  <!-- Login Form component -->
+  <!--<app-registration-form></app-registration-form>-->
+
+  <!-- Login Form component -->
+  <!-- <app-course-form></app-course-form> -->
 
   <!-- Modal component -->
   <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->

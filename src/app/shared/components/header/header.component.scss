@@ -8,10 +8,17 @@
     padding: 0 30px;
     background-color: $color-white;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+
+    .logo{
+        cursor: pointer;
+    }
+
+    .header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        gap: 25px;
+    }
+
 }
 
-.header-end {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-}

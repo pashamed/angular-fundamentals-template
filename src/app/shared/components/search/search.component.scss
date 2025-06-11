@@ -1,10 +1,25 @@
 .app-search {
+  width: 85vw;
   display: flex;
-  width: 100%;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
 
+  .app-search-input{
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
   & input {
     margin-right: 24px;
-    max-width: 400px;
+    padding: 14px 20px;
+    border: 1px solid rgba(189, 186, 186, 0.511);
+    outline: none;
+  }
+  &input:focus{
+    outline: none;
+  }
+  .add-course-btn{
+    padding: 2px;
   }
 }

@@ -1,27 +1,74 @@
-<h2 class="text-align-center">Login</h2>
-<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
-  <div class="app-plate">
+<h2 class="form-title text-align-center">Login</h2>
+<div class="form-container">
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="onSubmit(); loginForm.reset()"
+    class="form-group"
+  >
     <div class="login-form">
       <div class="form__control">
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" placeholder="Input text" required emailValidator
-          [(ngModel)]="model.email" #email="ngModel" />
-        <div *ngIf="email.invalid && email.touched" id="emailErrorMessage" class="text-danger">
-          <div *ngIf="email.errors?.['required']">Email is required.</div>
-          <div *ngIf="email.errors?.['invalidEmail']">Invalid email.</div>
-        </div>
+        <!--Use the name `email` for the form control.-->
+        <input
+          type="text"
+          id="email"
+          placeholder="Input text"
+          class="form-control"
+          name="email"
+          [(ngModel)]="email"
+          required
+          emailValidator
+        />
+        <span
+          id="emailErrorMessage"
+          class="text-danger"
+          *ngIf="
+              loginForm.controls['email']?.errors?.['required'] &&
+              loginForm.controls['email']?.dirty
+            "
+          >Email is required.</span
+        >
+        <span
+          id="emailErrorMessage"
+          class="text-danger"
+          *ngIf="
+            loginForm.controls['email']?.errors?.['emailValidator'] &&
+            loginForm.controls['email']?.dirty
+          "
+          >Email is invalid.</span
+        >
       </div>
       <div class="form__control">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Input text" required
-          [(ngModel)]="model.password" #password="ngModel" appPasswordToggle />
-        <div *ngIf="password.invalid && password.touched" id="passwordErrorMessage" class="text-danger">Password is
-          required.</div>
+        <!--Use the name `password` for the form control.-->
+        <input
+          type="password"
+          id="password"
+          placeholder="Input text"
+          class="form-control"
+          name="password"
+          [(ngModel)]="password"
+          required
+        />
+        <span
+          *ngIf="loginForm.controls['password']?.errors?.['required'] &&
+          loginForm.controls['password']?.dirty"
+          id="passwordErrorMessage"
+          class="text-danger"
+          >Password is required.</span
+        >
       </div>
-      <app-button buttonText="Login" class="form__action"></app-button>
+      <div class="form__action d-flex justify-content-center">
+        <app-button
+          type="form"
+          [disabled]="!loginForm.form.valid"
+          [text]="'LOGIN'"
+        ></app-button>
+      </div>
       <div class="form__text">
-        If you don't have an account you may <strong>Sign Up</strong>
+        If you don't have an account you may
+        <a href="/registration"><strong>Registration</strong></a>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

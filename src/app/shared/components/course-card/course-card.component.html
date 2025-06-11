@@ -1,19 +1,29 @@
 <div class="course-card">
     <div class="course-card__description">
-        <div class="course-card__description-title">{{ title }}</div>
-        <div class="course-card__description-text">{{ description }}</div>
+      <!-- Replace ::text:: with your code -->
+      <div class="course-card__description-title">{{course.title}}</div>
+      <div class="course-card__description-text">{{course.description}}</div>
     </div>
     <div class="course-card__info">
         <div class="course-card__info-text">
             <div>
-                <b>Authors: </b>
-                {{ authors.join(', ') }}
+              <b>Authors: </b>
+              <!-- {{ getAuthorsNames(course.authors)}} -->
+              <!-- <div *ngFor="let authorName of authorsNames">{{ authorName }}</div> -->
+              <span *ngFor="let author of authorsNames">{{author.result.name }}</span>
             </div>
-            <div><b>Duration: </b><span class="course-card__duration">{{ duration | duration}}</span></div>
-            <div><b>Created: </b><span class="course-card__date">{{ creationDate | customDate }}</span></div>
+            <div><b>Duration: </b><span class="course-card__duration">{{ course.duration }}</span></div>
+            <div><b>Created: </b><span class="course-card__date">{{ course.creationDate | customDate }}</span></div>
         </div>
         <div class="course-card__info-actions">
-            <ng-content></ng-content>
+            <div class="course-card__buttons">
+                <!--Enter your code here-->
+                <app-button text="SHOW COURSE" (click)="showCourse()"  ></app-button>
+                <ng-container *ngIf="editable">
+                    <app-button [icon]="deleteIcon" class="icon" (click)="onDelete(course)"></app-button>
+                    <app-button [icon]="editIcon" class="icon" (click)="onEdit(course)"></app-button>
+                  </ng-container>
+            </div>
         </div>
     </div>
 </div>
