@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { emailValidator } from '@app/shared/directives/email.directive';
 
 @Component({
   selector: 'app-registration-form',
@@ -8,5 +9,31 @@ import { FormGroup } from '@angular/forms';
 })
 export class RegistrationFormComponent {
   registrationForm!: FormGroup;
-  // Use the names `name`, `email`, `password` for the form controls.
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.registrationForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, emailValidator()]],
+      password: ['', Validators.required],
+    });
+  }
+
+  get name() {
+    return this.registrationForm.get('name');
+  }
+
+  get email() {
+    return this.registrationForm.get('email');
+  }
+
+  get password() {
+    return this.registrationForm.get('password');
+  }
+
+  onSubmit(): void {
+    this.registrationForm.markAllAsTouched();
+    console.log(this.registrationForm.value);
+  }
 }

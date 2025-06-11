@@ -1,26 +1,19 @@
 <div class="course-card">
     <div class="course-card__description">
-        <!-- Replace ::text:: with your code -->
         <div class="course-card__description-title">{{ title }}</div>
         <div class="course-card__description-text">{{ description }}</div>
     </div>
     <div class="course-card__info">
         <div class="course-card__info-text">
             <div>
-                <b class="">Authors: </b>
-                {{ authors.length > 0 ? authors.join(', ') : 'No authors' }}
+                <b>Authors: </b>
+                {{ authors.join(', ') }}
             </div>
-            <div><b>Duration: </b><span class="course-card__duration">{{ duration }}</span></div>
-            <div><b>Created: </b><span class="course-card__date">{{ creationDate }}</span></div>
+            <div><b>Duration: </b><span class="course-card__duration">{{ duration | duration}}</span></div>
+            <div><b>Created: </b><span class="course-card__date">{{ creationDate | customDate }}</span></div>
         </div>
         <div class="course-card__info-actions">
-            <app-custom-button text="Show Course" (click)="onShowCourse()" iconPrefix="fas" class="course-card__showButton"></app-custom-button>
-            <div class="course-card__buttons">
-                <app-custom-button *ngIf="editable" icon="trash" [reverseColors]="true" iconPrefix="fas"
-                                   class="course-card__deleteButton"></app-custom-button>
-                <app-custom-button *ngIf="editable" icon="edit" [reverseColors]="true" iconPrefix="fas"
-                                   class="course-card__editButton"></app-custom-button>
-            </div>
+            <ng-content></ng-content>
         </div>
     </div>
 </div>

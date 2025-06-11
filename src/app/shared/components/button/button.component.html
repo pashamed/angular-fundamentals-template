@@ -1,3 +1,8 @@
-<div class="app-button">
-    <ng-content></ng-content>
-</div>
+<button class="app-button" [class.app-button__single-icon]="iconName && !buttonText" [type]="type">
+  <ng-container *ngIf="buttonText">
+    {{buttonText}}
+  </ng-container>
+  <ng-container *ngIf="iconName">
+    <fa-icon [icon]="['fas', iconName]"></fa-icon>
+  </ng-container>
+</button>

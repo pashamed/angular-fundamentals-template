@@ -1,29 +1,27 @@
 <h2 class="text-align-center">Login</h2>
-<div class="app-plate">
-  <form #loginForm="ngForm">
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <div class="app-plate">
     <div class="login-form">
-      <div>
-        <div class="form__control">
-          <label for="email">Email</label>
-          <!--Use the name `email` for the form control.-->
-          <input type="text" id="email" placeholder="Input text"/>
-          <span id="emailErrorMessage" class="text-danger">Email is required.</span>
-        </div>
-        <div class="form__control">
-          <label for="password">Password</label>
-          <!--Use the name `password` for the form control.-->
-          <input type="password" id="password" placeholder="Input text"/>
-          <span id="passwordErrorMessage" class="text-danger">Password is required.</span>
+      <div class="form__control">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Input text" required emailValidator
+          [(ngModel)]="model.email" #email="ngModel" />
+        <div *ngIf="email.invalid && email.touched" id="emailErrorMessage" class="text-danger">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['invalidEmail']">Invalid email.</div>
         </div>
       </div>
-      <div>
-        <div class="form__action">
-          <app-button></app-button>
-        </div>
-        <div class="form__text">
-          If you don't have an account you may <strong>Registration</strong>
-        </div>
+      <div class="form__control">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Input text" required
+          [(ngModel)]="model.password" #password="ngModel" appPasswordToggle />
+        <div *ngIf="password.invalid && password.touched" id="passwordErrorMessage" class="text-danger">Password is
+          required.</div>
+      </div>
+      <app-button buttonText="Login" class="form__action"></app-button>
+      <div class="form__text">
+        If you don't have an account you may <strong>Sign Up</strong>
       </div>
     </div>
-  </form>
-</div>
+  </div>
+</form>

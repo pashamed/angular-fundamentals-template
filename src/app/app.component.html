@@ -1,34 +1,23 @@
 <app-header>
-    <div class="header-right__item">
-        <span *ngIf="userName" class="user-name">{{ userName }}</span>
-    </div>
-    <div class="header-right__item">
-        <app-button (click)="onAuthAction()">
-            {{ userName ? 'Logout' : 'Login' }}
-        </app-button>
-    </div>
+  <div>{{ userName }}</div>
+  <app-button [buttonText]="buttonText"></app-button>
 </app-header>
 <div class="app-root">
-    <!-- Search component -->
-    <!--<app-search></app-search>-->
+  <app-info title="Your List Is Empty" text="Please use ’Add New Course’ button to add your first course">
+    <app-button buttonText="Add New Course"></app-button>
+  </app-info>
 
-    <!-- Info component -->
-    <app-info>
-        <app-custom-button text="Add new course"></app-custom-button>
-    </app-info>
+  <app-courses-list [courses]="courses" [editable]="true" (showCourseEvent)="showCourse($event)"
+    (editCourseEvent)="editCourse($event)" (deleteCourseEvent)="deleteCourse($event)"></app-courses-list>
 
-    <!-- Course Card component -->
-    <app-course-list [courses]="mockedCoursesList"></app-course-list>
+  <app-course-info [course]="courses[0]"></app-course-info>
 
-    <!-- Login Form component -->
-    <!--<app-login-form></app-login-form>-->
+  <app-login-form></app-login-form>
 
-    <!-- Login Form component -->
-    <!--<app-registration-form></app-registration-form>-->
+  <app-registration-form></app-registration-form>
 
-    <!-- Login Form component -->
-    <!--<app-course-form></app-course-form>-->
+  <app-course-form></app-course-form>
 
-    <!-- Modal component -->
-    <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->
+  <!-- Modal component -->
+  <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->
 </div>

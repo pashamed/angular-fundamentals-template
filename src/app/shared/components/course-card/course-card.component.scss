@@ -1,4 +1,4 @@
-@import "src/app/shared/styles/variables/colors";
+@import 'src/app/shared/styles/variables/colors';
 
 .course-card {
   padding: 32px;
@@ -7,7 +7,6 @@
   border-left: 8px solid $color-dark-gray;
   display: flex;
   justify-content: space-between;
-  margin: 32px 0;
   min-height: 170px;
   width: 80vw;
   background-color: $color-white;
@@ -17,11 +16,6 @@
 
     &-title {
       font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    &-text {
-      // Add description text styles if needed
     }
   }
 
@@ -34,51 +28,11 @@
 
     &-text {
       margin-top: 16px;
-
-      .course-card__duration,
-      .course-card__date {
-        // Add duration/date styles if needed
-      }
     }
 
     &-actions {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 24px;
-      gap: 16px; // add gap for spacing
-    }
-  }
-
-  &__buttons {
-    display: flex;
-    font-size: 25px;
-    flex-direction: row;
-    gap: 16px;
-    margin-left: 22px;
-  }
-
-  &__faButton {
-    font-size: 35px;
-    background: transparent;
-    border: none;
-    color: #016486;
-    cursor: pointer;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: $color-gray;
-    }
-
-    &--primary {
-      color: $color-gray;
-      font-weight: bold;
-    }
-
-    &--secondary {
-      color: $color-gray;
-      font-weight: normal;
+      gap: 11px;
     }
   }
 }

@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 $color-white: #fff;
-$color-gray: #CFCFCF;
-$color-red: #FF0000;
+$color-gray: #cfcfcf;
+$color-red: #ff0000;
+$input-margin-top: 4px;
 
 html {
   height: 100%;
@@ -9,24 +10,39 @@ html {
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-  background-color: #F7F7F7;
-  color: #333E48;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f7f7f7;
+  color: #333e48;
   height: 100%;
+}
+
+button {
+  font-family: 'Open Sans', sans-serif;
 }
 
 input,
 textarea {
   width: 100%;
+  min-height: 50px;
   padding: 12px 16px;
   display: inline-block;
   border: 1px solid #cfcfcf;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 16px;
-  margin-top: 4px;
+  margin-top: $input-margin-top;
   resize: none;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
 }
 
 input:invalid,
@@ -36,9 +52,54 @@ textarea:invalid {
 
 label {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 h2 {
   margin-bottom: 36px;
+}
+
+h3 {
+  margin: 0px;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.input-wicon {
+  padding-right: 52px;
+
+  &-wrapper {
+    position: relative;
+  }
+
+  &-button {
+    font-size: 22px;
+    width: 27.5px;
+    color: $color-gray;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: none;
+    position: absolute;
+    top: calc(50% + $input-margin-top/2);
+    transform: translateY(-50%);
+    right: 16px;
+    align-content: center;
+
+    &:hover {
+      color: #016486;
+    }
+
+    &:focus {
+      outline: none;
+      color: #00516b;
+    }
+
+    &:active {
+      color: #00394f;
+    }
+  }
 }

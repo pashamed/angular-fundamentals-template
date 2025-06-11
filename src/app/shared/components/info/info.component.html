@@ -1,17 +1,6 @@
 <div class="app-info">
-    <!-- Replace ::text:: with your code -->
-    <div class="app-info__header">{{ title }}</div>
-    <div class="app-info__title">{{ text }}</div>
-    <div *ngIf="itemsToShow?.length; else emptyList">
-        <div class="app-info__items">
-            <ng-container *ngFor="let item of itemsToShow">
-                <div class="app-info__item">{{ item }}</div>
-            </ng-container>
-        </div>
-    </div>
-    <ng-template #emptyList>
-        <div class="app-info__empty-message">Your list is empty</div>
-        <div class="app-info__empty-hint">Please use 'Add New Course' button to add your first course</div>
-    </ng-template>
-    <ng-content></ng-content>
+  <!-- Replace ::text:: with your code -->
+  <div class="app-info__header">{{ title }}</div>
+  <div class="app-info__title">{{ text }}</div>
+  <ng-content></ng-content>
 </div>

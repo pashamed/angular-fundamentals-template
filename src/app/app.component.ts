@@ -1,22 +1,38 @@
 import { Component } from '@angular/core';
-import {mockedCoursesList} from "@shared/mocks/mocks";
+import { mockedAuthorsList, mockedCoursesList } from './shared/mocks/mock';
+import { CourseView } from './shared/models/courseView.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'courses-app';
-  userName?: string = undefined;
+  // header
+  buttonText = 'Log out';
+  userName = 'User';
 
-  onAuthAction() {
-    if (this.userName) {
-      this.userName = undefined; // Logout
-    } else {
-      this.userName = "Harry Potter"; // Login
-    }
+  // courses
+  editable = false;
+  courses: CourseView[] = mockedCoursesList.map((course) => ({
+    ...course,
+    creationDate: new Date(course.creationDate),
+    authors: course.authors.map(
+      (authorId) =>
+        mockedAuthorsList.find(({ id }) => id === authorId)?.name || ''
+    ),
+  }));
+
+  showCourse(id: string): void {
+    console.log('show', id);
   }
 
-    protected readonly mockedCoursesList = mockedCoursesList;
+  editCourse(id: string): void {
+    console.log('edit', id);
+  }
+
+  deleteCourse(id: string): void {
+    console.log('delete', id);
+  }
 }

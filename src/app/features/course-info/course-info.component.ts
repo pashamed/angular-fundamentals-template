@@ -1,24 +1,18 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CourseView } from '@app/shared/models/courseView.model';
 
 @Component({
   selector: 'app-course-info',
   templateUrl: './course-info.component.html',
-  styleUrls: ['./course-info.component.scss']
+  styleUrls: ['./course-info.component.scss'],
 })
 export class CourseInfoComponent {
-  // Use the names for the input `course`.
-  @Input() course!: {
-    id: string;
-    title: string;
-    description: string;
-    creationDate: Date;
-    duration: number;
-    authors: string[];
-  }
-
-  @Output() back = new EventEmitter<void>();
-
-  onBack() {
-    this.back.emit();
-  }
+  @Input() course: CourseView = {
+    id: '',
+    title: '',
+    description: '',
+    creationDate: new Date(0),
+    duration: 0,
+    authors: [],
+  };
 }
